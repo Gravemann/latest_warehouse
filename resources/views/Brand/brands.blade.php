@@ -5,5 +5,7 @@
 @endsection
 
 @section('brands')
-    <component-brands></component-brands>
+    <component-brands ref="brands" csrf="{{ csrf_token() }}"></component-brands>
 @endsection
+
+

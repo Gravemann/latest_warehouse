@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Resources;
+namespace App\Http\Resources\Brand;
 
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class BrandResouce extends JsonResource
-{
+{   
     /**
      * Transform the resource into an array.
      *
@@ -20,8 +21,8 @@ class BrandResouce extends JsonResource
             'name' => $this->name,
             'image_path' => $this->image_path,
             'image_url' => $this->image_url,
-            'created_at' => $this->created_at->diffForHumans(),
-            'updated_at' => $this->updated_at->diffForHumans(),
+            // 'created_at' => $this->created_at->format('Y-m-d H:i:s'),
+            // 'updated_at' => $this->updated_at->format('Y-m-d H:i:s'),
         ];
     }
 }

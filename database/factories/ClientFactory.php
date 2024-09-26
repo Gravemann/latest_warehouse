@@ -17,12 +17,13 @@ class ClientFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id' => 1,
+            'user_id' => 30,
             'name' => \fake()->firstName(),
             'surname' => \fake()->lastName(),
             'contact_number' => \fake()->phoneNumber(),
             'company' => \fake()->company(),
-            'image' => \fake()->image(),
+            'image_path' => \null,
+            'image_url' => \fake()->imageUrl(),
         ];
     }
 }

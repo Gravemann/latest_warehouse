@@ -2,16 +2,18 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Contracts\Auth\CanResetPassword;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasManyThrough;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\HasOneThrough;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail, CanResetPassword
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -46,6 +48,11 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
+    public function profile_image(): HasOne
+    {
+        return $this->hasOne(UserImage::class);
+    }
+
     public function brands(): HasMany
     {
         return $this->hasMany(Brand::class);
@@ -56,15 +63,25 @@ class User extends Authenticatable
         return $this->hasMany(Client::class);
     }
 
-    public function products(): HasManyThrough
+    // public function products(): HasManyThrough
+    // {
+    //     return $this->hasManyThrough(Product::class, Brand::class);
+    //     or
+    //     return $this->through('brands')->has('products');
+    // }
+
+    // public function product(): HasOneThrough
+    // {
+    //     return $this->hasOneThrough(Product::class, Brand::class);
+    // }
+
+    public function products(): HasMany
     {
-        return $this->hasManyThrough(Product::class, Brand::class);
-        // or
-        // return $this->through('brands')->has('products');
+        return $this->hasMany(Product::class);
     }
 
-    public function product(): HasOneThrough
+    public function orders(): HasMany
     {
-        return $this->hasOneThrough(Product::class, Brand::class);
+        return $this->hasMany(Order::class);
     }
 }

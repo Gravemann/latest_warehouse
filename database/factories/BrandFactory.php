@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,9 +18,12 @@ class BrandFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id' => 1,
-            'name' => \fake()->userName(),
-            'image' => \fake()->image(),
+            'user_id' => 2,
+            'name' => fake()->userName(),
+            'image_path' => null,
+            'image_url' => fake()->imageUrl(128, 128),
+            'created_at' => \now()->format('Y-m-d H:i:s'),
+            'updated_at' => \now()->format('Y-m-d H:i:s')
         ];
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\View\Components\Dashboard;
 
+use App\Models\Brand;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;

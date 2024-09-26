@@ -1,4 +1,4 @@
-<div id="24h">
+{{-- <div id="24h">
     <h1 class="font-bold py-4 uppercase">Last 24h Statistics</h1>
     <div id="stats" class="grid gird-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         <div class="bg-black/60 to-white/5 p-6 rounded-lg">
@@ -14,14 +14,14 @@
                     <p class="text-indigo-300 text-sm font-medium uppercase leading-4">Users</p>
                     <p class="text-white font-bold text-2xl inline-flex items-center space-x-2">
                         <span>+28</span>
-                        {{-- <span>
+                        <span>
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                 stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                                 <path stroke-linecap="round" stroke-linejoin="round"
                                     d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941" />
                             </svg>
 
-                        </span> --}}
+                        </span>
                     </p>
                 </div>
             </div>
@@ -40,14 +40,14 @@
                     <p class="text-teal-300 text-sm font-medium uppercase leading-4">Income</p>
                     <p class="text-white font-bold text-2xl inline-flex items-center space-x-2">
                         <span>$2,873.88</span>
-                        {{-- <span>
+                        <span>
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                 stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                                 <path stroke-linecap="round" stroke-linejoin="round"
                                     d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941" />
                             </svg>
 
-                        </span> --}}
+                        </span>
                     </p>
                 </div>
             </div>
@@ -66,17 +66,19 @@
                     <p class="text-blue-300 text-sm font-medium uppercase leading-4">Invoices</p>
                     <p class="text-white font-bold text-2xl inline-flex items-center space-x-2">
                         <span>+79</span>
-                        {{-- <span>
+                        <span>
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                 stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                                 <path stroke-linecap="round" stroke-linejoin="round"
                                     d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941" />
                             </svg>
 
-                        </span> --}}
+                        </span>
                     </p>
                 </div>
             </div>
         </div>
     </div>
-</div>
+</div> --}}
+
+<component-statistics ref="statistics"></component-statistics>

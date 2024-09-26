@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -26,5 +27,39 @@ class Brand extends Model
     public function products(): HasMany
     {
         return $this->hasMany(Product::class);
+    }
+
+    public function scopeAuthorized(Builder $query): void
+    {
+        $query->where('user_id', '=' , auth()->id());
+    }
+
+    /**
+     * @param void|string $value
+     */
+
+    public function scopeFiltered(Builder $builder, $value): void
+    {
+        $builder->when($value, function ($query) use ($value) {
+            $query->whereAny(
+                [
+                    'name',
+                    'created_at',
+                    'updated_at'
+                ],
+                'LIKE',
+                '%'. $value . '%'
+            );
+        });
+    }
+
+    public function scopeSorted(Builder $builder, $column, $order): void
+    {
+        $builder->when($column, function ($query) use ($column, $order) {
+            $query->orderBy($column, $order);
+        })
+        ->when(is_null($column), function ($query) {
+            $query->latest();
+        });
     }
 }

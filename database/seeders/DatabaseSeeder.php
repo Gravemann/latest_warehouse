@@ -19,10 +19,34 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        // \App\Models\Brand::factory(10)->create();
+        // \App\Models\Brand::factory(1000)->create();
 
-        // \App\Models\Product::factory(100)->create();
+        $brands = \App\Models\Brand::factory(10000)->make();
 
-        //  \App\Models\Client::factory(8)->create();
+        $chunks = $brands->chunk(2000);
+
+        foreach ($chunks as $chunk) {
+            \App\Models\Brand::insert($chunk->toArray());
+        }
+
+        // $products = \App\Models\Product::factory(10000)->make();
+
+        // $chunks = $products->chunk(2000);
+
+        // foreach ($chunks as $chunk) {
+        //     \App\Models\Product::insert($chunk->toArray());
+        // }
+
+        // $clients = \App\Models\Client::factory(10000)->make();
+
+        // $chunks = $clients->chunk(2000);
+
+        // foreach ($chunks as $chunk) {
+        //     \App\Models\Client::insert($chunk->toArray());
+        // }
+
+        //  \App\Models\Client::factory(15)->create();
+
+        // \App\Models\Order::factory(300)->create();
     }
 }
